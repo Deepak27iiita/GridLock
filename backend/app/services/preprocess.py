@@ -26,7 +26,12 @@ _READ_DTYPES = {
 
 def load_raw_dataset(path) -> pd.DataFrame:
     usecols = list(_READ_DTYPES.keys()) + ["latitude", "longitude", "created_datetime"]
-    return pd.read_csv(path, usecols=usecols, dtype=_READ_DTYPES, low_memory=False)
+    chunks = []
+    for chunk in pd.read_csv(path, usecols=usecols, dtype=_READ_DTYPES, engine="python", on_bad_lines="skip", chunksize=25000):
+        # Filter out rejected rows early to save RAM
+        chunk = chunk[chunk["validation_status"].fillna("") != "rejected"]
+        chunks.append(chunk)
+    return pd.concat(chunks, ignore_index=True)
 
 
 def _assign_h3_unique(latitudes: np.ndarray, longitudes: np.ndarray) -> np.ndarray:
@@ -45,7 +50,7 @@ def _dominant_by_group(df: pd.DataFrame, group_col: str, value_col: str) -> pd.S
 
 
 def preprocess_violations(df: pd.DataFrame) -> pd.DataFrame:
-    df = df[df["validation_status"].fillna("") != "rejected"].copy()
+    # Filter is already applied in chunks during load_raw_dataset; avoid .copy() to save memory
 
     df["primary_violation"] = (
         df["violation_type"].str.extract(_PRIMARY_VIOLATION_RE, expand=False).fillna("UNKNOWN")

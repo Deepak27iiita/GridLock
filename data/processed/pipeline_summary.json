@@ -1,0 +1,12 @@
+{
+  "elapsed_seconds": 14.8,
+  "violations": 242362,
+  "hotspots": 60,
+  "clustering_silhouette": 0.3108,
+  "forecast_mape": 4.75,
+  "forecast_rmse": 187.452,
+  "pcis_r2": 0.9986,
+  "pcis_mae": 0.0025,
+  "validation_records": 242362,
+  "model_grade": "A Pilot Ready"
+}

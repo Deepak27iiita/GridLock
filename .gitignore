@@ -19,8 +19,6 @@ ENV/
 
 # Large data files (excluded from GitHub — run train_pipeline.py to regenerate)
 Dataset/
-data/processed/
-data/models/
 
 # Jupyter
 .ipynb_checkpoints/

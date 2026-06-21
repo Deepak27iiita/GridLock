@@ -69,7 +69,6 @@ def main() -> None:
     print(f"      Model grade: {report['model_grade']} | Targets: {len(plan)}")
 
     clear_frame_cache()
-    DataCache.warm()
 
     elapsed = time.perf_counter() - started
     summary = {"elapsed_seconds": round(elapsed, 1), "violations": len(violations), "hotspots": len(hotspots), **report}

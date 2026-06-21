@@ -51,7 +51,7 @@ def train_forecast_models(violations: pd.DataFrame, hotspots: pd.DataFrame) -> d
     test_dows = x_test["day_of_week"].astype(int).to_numpy()
     lookup_preds = np.array(
         [
-            combo_lookup.get(f"{h}_{d}", hour_lookup.get(int(h), float(y_train.mean())))
+            combo_lookup.get(f"{h}_{d}", hour_lookup.get(int(h), 0.0))
             for h, d in zip(test_hours, test_dows)
         ],
         dtype=np.float64,
@@ -103,11 +103,11 @@ def predict_hotspot_forecast(hotspot_id: str, name: str, hours: list[int] | None
     )
     ml_preds = np.clip(model.predict(frame[features]), 0, None)
     lookup_preds = np.array(
-        [combo_lookup.get(f"{h}_2", hour_lookup.get(h, bundle["city_mean"])) for h in hours],
+        [combo_lookup.get(f"{h}_2", hour_lookup.get(h, 0.0)) for h in hours],
         dtype=np.float64,
     )
     city_preds = 0.4 * ml_preds + 0.6 * lookup_preds
-    preds = city_preds * share * 6
+    preds = city_preds * share / 26.0
     std = np.maximum(preds * 0.12, 0.3)
 
     return [

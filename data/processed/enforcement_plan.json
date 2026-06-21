@@ -1,0 +1,80 @@
+[
+  {
+    "rank": 1,
+    "hotspot_id": "HS-0002",
+    "name": "BTP040 - Elite Junction",
+    "latitude": 12.976619708506044,
+    "longitude": 77.57660547719128,
+    "pcis": 1.0,
+    "recommended_window": "10:00-13:00 IST",
+    "officers_needed": 3,
+    "tow_truck": false,
+    "estimated_delay_saved_min": 81.7,
+    "rationale": "NO PARKING cluster with junction impact 86% and spillover risk 44%."
+  },
+  {
+    "rank": 2,
+    "hotspot_id": "HS-0003",
+    "name": "BTP044 - Sagar Theatre Junction",
+    "latitude": 12.9749660448307,
+    "longitude": 77.57889507446069,
+    "pcis": 0.989,
+    "recommended_window": "17:00-20:00 IST",
+    "officers_needed": 3,
+    "tow_truck": false,
+    "estimated_delay_saved_min": 78.2,
+    "rationale": "NO PARKING cluster with junction impact 77% and spillover risk 25%."
+  },
+  {
+    "rank": 3,
+    "hotspot_id": "HS-0012",
+    "name": "BTP045 - Danvanthri Road Junction",
+    "latitude": 12.97707292413793,
+    "longitude": 77.57476503064704,
+    "pcis": 0.977,
+    "recommended_window": "10:00-13:00 IST",
+    "officers_needed": 3,
+    "tow_truck": false,
+    "estimated_delay_saved_min": 41.8,
+    "rationale": "WRONG PARKING cluster with junction impact 80% and spillover risk 27%."
+  },
+  {
+    "rank": 4,
+    "hotspot_id": "HS-0005",
+    "name": "BTP058 - Subbanna Junction",
+    "latitude": 12.978988446293204,
+    "longitude": 77.57865889254826,
+    "pcis": 0.966,
+    "recommended_window": "10:00-13:00 IST",
+    "officers_needed": 3,
+    "tow_truck": false,
+    "estimated_delay_saved_min": 53.9,
+    "rationale": "NO PARKING cluster with junction impact 77% and spillover risk 27%."
+  },
+  {
+    "rank": 5,
+    "hotspot_id": "HS-0001",
+    "name": "BTP082 - KR Market Junction",
+    "latitude": 12.964437980005798,
+    "longitude": 77.5772261199771,
+    "pcis": 0.954,
+    "recommended_window": "10:00-13:00 IST",
+    "officers_needed": 3,
+    "tow_truck": false,
+    "estimated_delay_saved_min": 77.5,
+    "rationale": "WRONG PARKING cluster with junction impact 72% and spillover risk 12%."
+  },
+  {
+    "rank": 6,
+    "hotspot_id": "HS-0014",
+    "name": "BTP083 - AS Char Street, Mysore Road",
+    "latitude": 12.966447274324878,
+    "longitude": 77.57439000113155,
+    "pcis": 0.943,
+    "recommended_window": "10:00-13:00 IST",
+    "officers_needed": 3,
+    "tow_truck": false,
+    "estimated_delay_saved_min": 37.3,
+    "rationale": "WRONG PARKING cluster with junction impact 70% and spillover risk 15%."
+  }
+]
