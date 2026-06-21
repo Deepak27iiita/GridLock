@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GridLock | AI Parking Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>GridLock</h1>
+      <p>AI-driven parking hotspot intelligence & congestion impact scoring for Bengaluru</p>
+    </div>
+    <div class="badge" id="model-grade">Loading models...</div>
+  </header>
+
+  <section class="stats-grid" id="stats-grid"></section>
+
+  <section class="layout">
+    <div class="panel">
+      <div class="panel-header">
+        <h2>PCIS Heatmap — Parking Congestion Impact Score</h2>
+        <div class="legend">
+          <span class="dot severe"></span>Severe
+          <span class="dot critical"></span>Critical
+          <span class="dot high"></span>High
+          <span class="dot moderate"></span>Moderate
+        </div>
+      </div>
+      <div class="panel-body">
+        <div id="map"></div>
+        <div id="heatmap-count" class="map-meta">0 cells</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header"><h2>Priority Hotspots</h2></div>
+      <div class="panel-body table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Zone</th>
+              <th>PCIS</th>
+              <th>Risk</th>
+              <th>Delay/hr</th>
+            </tr>
+          </thead>
+          <tbody id="hotspots-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="mid-grid">
+    <div class="panel">
+      <div class="panel-header"><h2>Violation Peak Hours (IST)</h2></div>
+      <div class="panel-body"><canvas id="hourly-chart" height="110"></canvas></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><h2>Top Junction Violations</h2></div>
+      <div class="panel-body"><canvas id="junction-chart" height="110"></canvas></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><h2>PCIS Feature Importance</h2></div>
+      <div class="panel-body"><canvas id="importance-chart" height="110"></canvas></div>
+    </div>
+  </section>
+
+  <section class="bottom-grid">
+    <div class="panel">
+      <div class="panel-header"><h2>Enforcement Deployment Plan</h2></div>
+      <div class="panel-body">
+        <div class="controls">
+          <select id="officer-count">
+            <option value="4">4 Officers</option>
+            <option value="6" selected>6 Officers</option>
+            <option value="8">8 Officers</option>
+          </select>
+          <button class="primary" id="refresh-plan">Generate Plan</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Hotspot</th>
+              <th>Window</th>
+              <th>Team</th>
+              <th>Saved</th>
+            </tr>
+          </thead>
+          <tbody id="plan-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header"><h2>Model Accuracy & Simulator</h2></div>
+      <div class="panel-body">
+        <div class="metrics-grid" id="metrics-grid"></div>
+        <div class="controls" style="margin-top:16px;">
+          <select id="extra-teams">
+            <option value="1">+1 Team</option>
+            <option value="2">+2 Teams</option>
+            <option value="3">+3 Teams</option>
+          </select>
+          <button class="primary" id="run-sim">Run What-If</button>
+        </div>
+        <div class="sim-result" id="sim-result">Simulate extra enforcement teams to estimate delay reduction.</div>
+        <canvas id="forecast-chart" height="120" style="margin-top:16px;"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>
